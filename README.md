@@ -1,6 +1,6 @@
 # Topspin_Automatisation
 
-Automatisation of NMR Spectrum processing in using the Bruker Topspin software with optional evaluation. 
+Automatisation of NMR Spectrum processing using the Bruker Topspin software with optional evaluation. 
 
 ## Installation: 
 1. Download all files from repository
