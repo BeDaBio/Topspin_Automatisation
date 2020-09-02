@@ -2,6 +2,7 @@ import math
 import os
 import sys
 import glob
+import Processing_Algorithms as proz
 from TopCmds import *
 
 def check_already_processed(List_of_Data_Paths):
@@ -72,13 +73,18 @@ def mult_open_manual_processing(Data):
         XCMD("*8",WAIT_TILL_DONE)   # upscale Spectrum
         XCMD("*8",WAIT_TILL_DONE)
         XCMD(".ph",WAIT_TILL_DONE)  # activates phase correction mode in Topspin
-        if Type == 1:   
-            PUTPAR('F2P',str(-0.5)) # Set region right bound
-            PUTPAR('F1P',str(0.5))  # Set PP region left bound
+        if Type == 1:
+            left_boundary=0.5
+            right_boundary=-0.5  
+            PUTPAR('F2P',str(right_boundary)) # Set region right bound
+            PUTPAR('F1P',str(left_boundary))  # Set PP region left bound
             XCMD("plotreg",WAIT_TILL_DONE)
         else: 
-            PUTPAR('F2P',str(8.0))  # Set region right bound
-            PUTPAR('F1P',str(9.0))  # Set PP region left bound
+
+            left_boundary=9.0
+            right_boundary=8.0  
+            PUTPAR('F2P',str(right_boundary)) # Set region right bound
+            PUTPAR('F1P',str(left_boundary))  # Set PP region left bound
             XCMD("plotreg",WAIT_TILL_DONE)    #Zoom into region set by F1P/F2P        
         count +=1
         if count > 34:

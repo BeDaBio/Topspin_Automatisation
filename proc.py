@@ -29,6 +29,7 @@ if Processing_Type == 0:
     #dat.check(Datalist)
 elif Processing_Type == 2:
     dat.mult_open(Datalist)
+    EXIT()
 else:
     dat.check_already_processed(Datalist)
     Data_Type = SELECT("","What type of data would you like to process",buttons=["NOESY", "CPMG","Cancel"])
@@ -38,8 +39,12 @@ else:
     for i in Datalist:
         dat.copy_dat(i)
         if Data_Type == 1:
-            Difference=proz.proz() # to change Processing algorythm go to C:\Bruker\TopSpin4.0.8\classes\lib\topspin_py\py\pycmd\proz
+            left_boundary=0.5
+            right_boundary=-0.5  
+            Difference=proz.proz(left_boundary,right_boundary) # to change Processing algorythm go to C:\Bruker\TopSpin4.0.8\classes\lib\topspin_py\py\pycmd\proz
         else:
+            left_boundary=9.0
+            right_boundary=8.0   
             Difference=proz.proz_noe()   # to change Processing algorythm go to C:\Bruker\TopSpin4.0.8\classes\lib\topspin_py\py\pycmd\proz
 if Quality_Check.Qualitytest == True:
     print("Evaluation of Spectrum processing according to De Brouwer, H. (2009). Evaluation of algorithms for automated phase correction of NMR spectra. Journal of magnetic resonance, 201(2), 230-238.:\n\
