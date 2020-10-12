@@ -9,7 +9,7 @@ def Check_180turn(leftboundary,rightboundary):
     Intensities_of_reference=sum(GETPROCDATA(leftboundary,rightboundary))
     if Intensities_of_reference < 0:
         XCMD(".ph",WAIT_TILL_DONE) # opens phase correction mode
-        XCMD(".ph180",WAIT_TILL_DONE) # adds 180° to ph0
+        XCMD(".ph180",WAIT_TILL_DONE) # adds 180 degrees to ph0
         XCMD(".sret",WAIT_TILL_DONE) # adjusts Spectrum according to ph and safes result
 
 # Processing of CPMG data
@@ -21,8 +21,16 @@ def proz(leftboundary,rightboundary):
     EF()  #exponential window multiplication + fourier
     APK0() #1. Phase correction 0th Ordnung
     APK1() #1. Phase correction 1st Ordnung
-    ABS() #Baseline correction 
+    ABS() #Baseline correction
+    APK() 
+    ABS() #Baseline correction
     Check_180turn(leftboundary,rightboundary) 
+
+def proz2D():
+    """processing pipeline for CPMG data""" 
+    XCMD("apk2d",WAIT_TILL_DONE)
+    ABS2() #Baseline correction 
+    ABS1()
 
 # Processing of NOESY data
 @Quality_Check.conditional_decorator(Quality_Check.Quality,Quality_Check.Quality_lifted,Qualitytest)
