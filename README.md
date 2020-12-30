@@ -1,15 +1,21 @@
 # Topspin_Automatisation
 
-Automatisation of NMR Spectrum processing using the Bruker Topspin software with optional evaluation. 
+Automatisation of NMR Spectrum processing using the Bruker Topspin software. 
 
 ## Installation: 
+
 1. Download all files from repository
 
-2. Safe proc.py in C:\Bruker\*TOPSPIN_VERSION*\exp\stan\nmr\py
+2. Save autoproc.py in C:\Bruker\*TOPSPIN_VERSION*\exp\stan\nmr\py
 
-3. Safe data_management.py, Quality_Check.py and Processing_Algorithms.py in C:\Bruker\*TOPSPIN_VERSION*\classes\lib\topspin_py\py\pycmd 
+3. Save data_management.py, main.py, quality_Check.py and processing.py in C:\Bruker\*TOPSPIN_VERSION*\classes\lib\topspin_py\py\pycmd 
 
 
-***To Start the Pipeline open Topspin and enter "proc" in the command line.***
+***To Start the pipeline open Topspin and enter "autoproc" in the command line.***
+Follow instructions given in GUI. 
 
- If you want to **evaluate** the processing algorythms **open Quality_Check.py** and change the value of **Qualitytest**  to **True**
+## Caution:
+
+ quality_check.py is still under construction. activating setting Qualitytest to True can cause errors !
+ 
+ If you want to **evaluate** the processing algorythms **open quality_check.py** and change the value of **Qualitytest**  to **True**
