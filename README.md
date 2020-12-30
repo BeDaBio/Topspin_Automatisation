@@ -4,7 +4,7 @@ Automatisation of NMR Spectrum processing using the Bruker Topspin software.
 
 ## Installation: 
 
-1. Download all files from repository pressing the green code button and selecting  "Download ZIP".
+1. Download all files from repository pressing the green "⤓ Code" button and selecting  "Download ZIP".
 
 2. Unzip file.
 
