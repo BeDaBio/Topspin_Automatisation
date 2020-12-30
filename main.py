@@ -3,8 +3,8 @@
  # stored in C:\Bruker\TopSpin4.0.8\classes\lib\topspin_py\py\pycmd # for Processing of the Spectrums
 from TopCmds import *
 import data_management as dat # stored in C:\Bruker\TopSpin4.0.8\classes\lib\topspin_py\py\pycmd # for data handling
-import Processing_Algorithms as proz # stored in C:\Bruker\TopSpin4.0.8\classes\lib\topspin_py\py\pycmd # for processing algorythms
-import Quality_Check # stored in C:\Bruker\TopSpin4.0.8\classes\lib\topspin_py\py\pycmd # for optional Quality check
+import processing as proz # stored in C:\Bruker\TopSpin4.0.8\classes\lib\topspin_py\py\pycmd # for processing algorythms
+import quality_check # stored in C:\Bruker\TopSpin4.0.8\classes\lib\topspin_py\py\pycmd # for optional Quality check
 from javax.swing import *
 from java.awt import *
 
@@ -23,12 +23,10 @@ right_boundary=float(dat.get_globalParameter("right_boundary"))
 
 #Main processing Script
 if Process == 3:
-    print("just open main")
     dat.mult_open(Datalist,Dimension)
     MSG(message = "Processing succesfull", title=None)
     EXIT()
 elif Process == 2:
-    print("manual Process main")
     dat.mult_open_manual_processing(Datalist,Dimension,Type)  
     ERRMSG(message = "Please move this message aside without closing it.\n You can now process your data manually.\nThe baseline of your spectra will be adjusted automatically after you close this message.", modal=1)
     XCMD("closeall", WAIT_TILL_DONE)
@@ -36,7 +34,6 @@ elif Process == 2:
         RE_PATH("{}/10/pdata/10/1r".format(i))
         Difference=proz.proz_manually() # to change Processing algorythm go to C:\Bruker\TopSpin4.0.8\classes\lib\topspin_py\py\pycmd\proz
 else:
-    print("Automatic main")
     un_processed=dat.check_already_processed(Datalist,Dimension)
     if Dimension==2:
         for i in Datalist:
@@ -50,7 +47,7 @@ else:
                 Difference=proz.proz() # to change Processing algorythm go to C:\Bruker\TopSpin4.0.8\classes\lib\topspin_py\py\pycmd\proz
             else: 
                 Difference=proz.proz_noe()   # to change Processing algorythm go to C:\Bruker\TopSpin4.0.8\classes\lib\topspin_py\py\pycmd\proz
-if Quality_Check.Qualitytest == True:
+if quality_check.Qualitytest == True:
     print("Evaluation of Spectrum processing according to De Brouwer, H. (2009). Evaluation of algorithms for automated phase correction of NMR spectra. Journal of magnetic resonance, 201(2), 230-238.:\n\
         The first value represents the difference over the integral before and after the Spectrum was processed \n\
         For the second value the Spectrum was lifted above 0 before calculating the difference")
