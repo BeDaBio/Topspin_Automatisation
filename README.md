@@ -8,9 +8,9 @@ Automatisation of NMR Spectrum processing using the Bruker Topspin software.
 
 2. Unzip file.
 
-3. Save autoproc.py in C:\Bruker\*TOPSPIN_VERSION*\exp\stan\nmr\py.
+3. Save autoproc.py in C:\Bruker\\*TOPSPIN_VERSION*\exp\stan\nmr\py.
 
-4. Save data_management.py, main.py, quality_Check.py and processing.py in C:\Bruker\*TOPSPIN_VERSION*\classes\lib\topspin_py\py\pycmd.
+4. Save data_management.py, main.py, quality_Check.py and processing.py in C:\Bruker\\*TOPSPIN_VERSION*\classes\lib\topspin_py\py\pycmd.
 
 
 To Start the pipeline open Topspin and enter "autoproc" in the command line.
