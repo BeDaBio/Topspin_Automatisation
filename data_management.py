@@ -26,18 +26,14 @@ def toglobalParameter(Parameter, Name=None):
 def check_already_processed(List_of_Data_Paths,dimension):
     """Checks if there are Spectra that are already processed"""
     old_version_exists=False
-    print("old_version_exists",old_version_exists)
     for paths in List_of_Data_Paths:
         if dimension == 1:
-            old_version_exists = os.path.isfile(paths+r"\10\pdata\10\1r")
-            print("path to file: ",paths+r"\10\pdata\10\1r")
+            old_version_exists = os.path.isfile(paths+r"\10\pdata\10\1r")       
         else:
             old_version_exists = os.path.isfile(paths+r"\12\pdata\10\1r")
-        print("old_version_exists outside loop",old_version_exists)
         if old_version_exists==True :
-            print("old_version_exists inside loop",old_version_exists)
+            print("At least one processed spectrum exists in your dataset: ",paths+r"\10\pdata\10\1r")
             un_processed = SELECT("","Your dataset contains already processed data.\n How do you want to continue ?",buttons=["Overwrite processed", "Open processed", "Stop processing"])
-            print("un_processed",un_processed)
             if int(un_processed) == 2: # value gets saved as string; has to be changed to int before comparing
                 ERRMSG(message = "Process canceled")
                 EXIT()
@@ -48,7 +44,6 @@ def check_already_processed(List_of_Data_Paths,dimension):
                 un_processed=str(1)
                 return un_processed
         else:
-            print("unprocessed")
             un_processed=str(1)
             return un_processed  
 

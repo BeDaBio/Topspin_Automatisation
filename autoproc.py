@@ -36,7 +36,14 @@ class MainGUI:
             self.right_boundary_CPMG.setVisible(False)
             self.left_boundary_NOESY.setVisible(False)
             self.right_boundary_NOESY.setVisible(False)
+            self.Label4.setVisible(False)
+            self.TypeButton1.setVisible(False)
+            self.TypeButton2.setVisible(False)
+
         else:
+            self.Label4.setVisible(True)
+            self.TypeButton1.setVisible(True)
+            self.TypeButton2.setVisible(True)
             if Type == "CPMG":
                 self.Label6.setVisible(True)
                 self.Label9.setVisible(True)
@@ -179,8 +186,14 @@ class MainGUI:
         dat.toglobalParameter(Dimension, Name="Dimension") 
         dat.toglobalParameter(Datalist, Name="Datalist") 
         self.frame.dispose()
-
-        EXEC_PYFILE("C:/Bruker/TopSpin4.0.8/classes/lib/topspin_py/py/pycmd/main") 
+        #Safes Version number as global parameter to access the right directory for other parts of the script
+        threat = EXEC_PYSCRIPT("root.GlobalSettings.globalProp.setProperty( 'globalTopspinVersion', TOPSPIN_VERSION()[0])")
+        threat.join()
+        TopspinVersion = root.GlobalSettings.globalProp.getProperty("globalTopspinVersion")
+        VersionNumber = TopspinVersion.split(" ")[1]
+        
+        #The main processing steps are carried out in a separate script to avoid threading problems:
+        EXEC_PYFILE("C:/Bruker/Topspin{}/classes/lib/topspin_py/py/pycmd/main".format(VersionNumber)) 
 
 
 
@@ -227,14 +240,15 @@ class MainGUI:
         self.DimensionButton1.setBounds(20,100,100,20)
         self.DimensionButton2.setBounds(20,120,100,20)
 
-        self.Label4.setBounds(5,160,400,20)
-        self.TypeButton1.setBounds(20,180,100,20)
-        self.TypeButton2.setBounds(20,200,100,20)
+        self.Label5.setBounds(5,160,400,20)
+        self.ProcessButton1.setBounds(20,180,600,20)
+        self.ProcessButton2.setBounds(20,200,600,20)
+        self.ProcessButton3.setBounds(20,220,600,20)
 
-        self.Label5.setBounds(5,240,400,20)
-        self.ProcessButton1.setBounds(20,260,300,20)
-        self.ProcessButton2.setBounds(20,280,600,20)
-        self.ProcessButton3.setBounds(20,300,600,20)
+        self.Label4.setBounds(5,260,400,20)
+        self.TypeButton1.setBounds(20,280,300,20)
+        self.TypeButton2.setBounds(20,300,600,20)
+        
 
         self.Label6.setBounds(5,340,800,20)
         self.Label7.setBounds(20,360,500,20)
