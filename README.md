@@ -21,3 +21,15 @@ To Start the pipeline open Topspin and enter "autoproc" in the command line.
  quality_check.py is still under construction. Setting "Qualitytest" to "True" can cause errors !
  
  If you want to evaluate the processing algorythms open quality_check.py and change the value of "Qualitytest"  to "True"
+ 
+ ## Known Issues:
+ Windows are no longer visible in the Topspin Window switcher but are still opened in the java backround.
+ Even though all windows are closed they still appear in the Topspin Window switcher count.
+ Solution: restart Topspin
+ 
+ 
+ Tabbed pane error: 
+ The automated procession seems to be faster than the Topspin Spectrum overview sometimes.
+ This error can be ignored as processing continues anyway. Spectra should be checked manually afterwards. 
+ So far no misclaculations in the atuomatic processing caused by this error have been reported.
+ 
