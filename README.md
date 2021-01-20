@@ -32,10 +32,13 @@ To Start the pipeline open Topspin and enter "autoproc" in the command line.
 
 
 
+
  Even though all windows are closed they still appear in the Topspin Window switcher count and in the .
   Windows are no longer visible in the Topspin Window switcher but are still opened in the java backround.
   
  *Solution: restart Topspin*
+ 
+ 
  
  
  *Tabbed pane error:* 
